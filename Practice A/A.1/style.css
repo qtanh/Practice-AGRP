@@ -1,0 +1,106 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #333;
+}
+
+#header {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+#paragraph {
+    background-color: #ffffff;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+}
+
+#paragraph h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+#btnGroup {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#btnGroup button {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnGroup button:hover {
+    background: #e9ecef;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    object-fit: cover;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: justify;
+}
+body.dark-mode {
+    background-color: #121212; 
+    color: #ffffff;            
+}
+
+body.dark-mode #paragraph {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode #paragraph h2, 
+body.dark-mode #header h1 {
+    color: #ffffff;
+}
+
+body.dark-mode .content p {
+    color: white;
+}
+
+body.dark-mode #btnGroup button {
+    background: #333;
+    border: 1px solid #444;
+}
+
+@media (max-width: 600px) {
+    #paragraph {
+        padding: 20px;
+    }
+    #header h1 {
+        font-size: 22px;
+    }
+}
