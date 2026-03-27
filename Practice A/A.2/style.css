@@ -1,0 +1,199 @@
+:root {
+    --dark-bg: #0d0e12;      
+    --card-bg: rgba(255, 255, 255, 0.03); 
+    --toast-bg: rgba(18, 19, 26, 0.95);   
+
+    --success: #2ecc71;
+    --error: #e74c3c;
+    --info: #3498db;
+    --warning: #f1c40f;
+
+    --bg-success: rgba(46, 204, 113, 0.1);
+    --bg-error: rgba(231, 76, 60, 0.1);
+    --bg-info: rgba(52, 152, 219, 0.1);
+    --bg-warning: rgba(241, 196, 15, 0.1);
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    text-align: center;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 8px;
+    margin: 0;
+    background: linear-gradient(to bottom, #fff, #444);
+    -webkit-background-clip: text; 
+    background-clip: text;       
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.control-panel {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    margin-top: 50px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.control-panel p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.btn {
+    padding: 18px 35px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn i { font-size: 1.1rem; }
+
+.btn-success { background: var(--bg-success); border: 1px solid var(--success); color: var(--success); }
+.btn-error   { background: var(--bg-error);   border: 1px solid var(--error);   color: var(--error);   }
+.btn-info    { background: var(--bg-info);    border: 1px solid var(--info);    color: var(--info);    }
+.btn-warning { background: var(--bg-warning); border: 1px solid var(--warning); color: var(--warning); }
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    filter: brightness(1.3);
+}
+
+.btn:active { transform: translateY(0); }
+
+#toast-container {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
+}
+
+.toast {
+    width: 380px;
+    background: var(--toast-bg);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: -10px 15px 40px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.toast.hide {
+    animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes slideOut {
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+.toast i { font-size: 1.4rem; margin-top: 2px; }
+
+.toast.success i { color: var(--success); }
+.toast.error   i { color: var(--error);   }
+.toast.info    i { color: var(--info);    }
+.toast.warning i { color: var(--warning); }
+
+.toast-content h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.toast-content p {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.4;
+}
+
+.toast-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #444;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.2s;
+}
+
+.toast-close:hover { color: #fff; }
+
+.toast::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    animation: progress 4s linear forwards;
+}
+
+.toast.success::after { background: var(--success); }
+.toast.error::after   { background: var(--error);   }
+.toast.info::after    { background: var(--info);    }
+.toast.warning::after { background: var(--warning); }
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+.toast:hover, .toast:hover::after {
+    animation-play-state: paused;
+}
